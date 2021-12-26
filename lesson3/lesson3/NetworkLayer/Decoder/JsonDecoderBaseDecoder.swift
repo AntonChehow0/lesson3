@@ -12,4 +12,8 @@ class JsonDecoderBaseDecoder: DecoderProtocol {
     func decodeToUsers(data: Data) -> [User] {
         return (try? JSONDecoder().decode([User].self, from: data)) ?? []
     }
+
+    func decodeToPost(data: Data) -> Post? {
+        return try? JSONDecoder().decode(Post.self, from: data)
+    }
 }

@@ -8,4 +8,5 @@ import Foundation
 
 protocol DecoderProtocol {
     func decodeToUsers(data: Data) -> [User]
+    func decodeToPost(data: Data) -> Post?
 }

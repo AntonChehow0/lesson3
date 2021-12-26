@@ -17,6 +17,7 @@ struct ContentView: View {
             .padding()
             .onAppear {
                 apiManager.loadUsers { print($0) }
+                apiManager.create(newPost: .mock(), completion: { print($0) })
             }
     }
 }

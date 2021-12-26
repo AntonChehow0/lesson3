@@ -17,10 +17,11 @@ class AlamofireNetworkManager: NetworkManagerProtocol {
         }
     }
 
-    func upload(data: Data, to url: URL, completion: @escaping (Data) -> ()) {
-        AF.request(url, method: .post, parameters: data).responseData { response in
+    func upload(data: Data, to url: URL, completion: ((Data) -> ())?) {
+        guard let json = try? JSONSerialization.jsonObject(with: data) as? [String : Any] else { return }
+        AF.request(url, method: .post, parameters: json, encoding: JSONEncoding.default).responseData { response in
             guard let data = response.data else { return }
-            completion(data)
+            completion?(data)
         }
     }
 }

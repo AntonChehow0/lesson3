@@ -15,6 +15,10 @@ class JsonSerializationDecoder: DecoderProtocol {
         return json.compactMap({ decode(dict: $0) })
     }
 
+    func decodeToPost(data: Data) -> Post? {
+        nil
+    }
+
     // MARK: Private funcs
     private func decode(dict: [String: Any]) -> User? {
         guard let id = dict["id"] as? Int,

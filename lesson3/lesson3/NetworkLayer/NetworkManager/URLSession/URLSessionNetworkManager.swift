@@ -23,13 +23,13 @@ class URLSessionNetworkManager: NetworkManagerProtocol {
         }.resume()
     }
 
-    func upload(data: Data, to url: URL, completion: @escaping (Data) -> ()) {
+    func upload(data: Data, to url: URL, completion: ((Data) -> ())?) {
         var request = URLRequest(url: url)
         request.httpBody = data
 
         urlSession.dataTask(with: request) { data, _, _ in
             guard let data = data else { return }
-            completion(data)
+            completion?(data)
         }.resume()
     }
 }

@@ -8,4 +8,5 @@ import Foundation
 
 protocol ApiManagerProtocol {
     func loadUsers(completion: @escaping (_ users: [User]) -> Void)
+    func create(newPost: Post, completion: @escaping  (_ post: Post) -> Void)
 }
