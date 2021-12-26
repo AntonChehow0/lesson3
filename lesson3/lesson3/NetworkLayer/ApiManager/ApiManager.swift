@@ -41,19 +41,23 @@ class ApiManager: ApiManagerProtocol {
     }
 
     init(networkManagerStrategy: NetworkManagerStrategy = .alamofire,
-         decoderStrategy: DecodingStrategy = .jsonDecoder) {
+         decoderStrategy: DecodingStrategy = .jsonDecoder,
+         encoder: EncoderProtocol = JSONEncoder()) {
         self.networkManager = networkManagerStrategy.rawValue
         self.decoder = decoderStrategy.rawValue
+        self.encoder = encoder
     }
 
     // MARK: Private properties
     private let networkManager: NetworkManagerProtocol
     private let decoder: DecoderProtocol
+    private let encoder: EncoderProtocol
 
     private let baseUrl = "https://jsonplaceholder.typicode.com/"
 
     private enum MethodPath: String {
         case users = "users"
+        case posts
     }
 
     // MARK: ApiManagerProtocol implementation
@@ -63,6 +67,17 @@ class ApiManager: ApiManagerProtocol {
         networkManager.load(from: url) { [weak self] data in
             let users = self?.decoder.decodeToUsers(data: data) ?? []
             completion(users)
+        }
+    }
+
+    func create(newPost: Post, completion: @escaping (Post) -> Void) {
+        guard let url = URL(string: "\(baseUrl)\(MethodPath.posts.rawValue)"),
+              let data = try? encoder.encode(newPost)
+        else { return }
+
+        networkManager.upload(data: data, to: url) { [weak self] data in
+            guard let createdPost = self?.decoder.decodeToPost(data: data) else { return }
+            completion(createdPost)
         }
     }
 }
