@@ -25,9 +25,24 @@ class ApiManager: ApiManagerProtocol {
         }
     }
 
-    init(networkManager: NetworkManagerProtocol = URLSessionNetworkManager(),
+    enum NetworkManagerStrategy: RawRepresentable {
+        init?(rawValue: NetworkManagerProtocol) { nil }
+        typealias RawValue = NetworkManagerProtocol
+
+        case urlSession
+        case alamofire
+
+        var rawValue: NetworkManagerProtocol {
+            switch self {
+            case .urlSession: return URLSessionNetworkManager()
+            case .alamofire: return AlamofireNetworkManager()
+            }
+        }
+    }
+
+    init(networkManagerStrategy: NetworkManagerStrategy = .alamofire,
          decoderStrategy: DecodingStrategy = .jsonDecoder) {
-        self.networkManager = networkManager
+        self.networkManager = networkManagerStrategy.rawValue
         self.decoder = decoderStrategy.rawValue
     }
 
