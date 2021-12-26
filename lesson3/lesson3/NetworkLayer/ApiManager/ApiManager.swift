@@ -8,10 +8,27 @@ import Foundation
 
 class ApiManager: ApiManagerProtocol {
 
+    enum DecodingStrategy: RawRepresentable {
+        init?(rawValue: DecoderProtocol) {
+            return nil
+        }
+
+        typealias RawValue = DecoderProtocol
+        case jsonDecoder
+        case jsonSerialization
+
+        var rawValue: DecoderProtocol {
+            switch self {
+            case .jsonDecoder: return  JsonDecoderBaseDecoder()
+            case .jsonSerialization: return  JsonSerializationDecoder()
+            }
+        }
+    }
+
     init(networkManager: NetworkManagerProtocol = URLSessionNetworkManager(),
-         decoder: DecoderProtocol = JsonSerializationDecoder()) {
+         decoderStrategy: DecodingStrategy = .jsonDecoder) {
         self.networkManager = networkManager
-        self.decoder = decoder
+        self.decoder = decoderStrategy.rawValue
     }
 
     // MARK: Private properties
