@@ -1,0 +1,25 @@
+//  URLSessionNetworkManager.swift
+//  lesson3
+//
+// Created by Виталий  on 26.12.2021.
+//
+
+import Foundation
+
+class URLSessionNetworkManager: NetworkManagerProtocol {
+
+    init(urlSession: URLSession = URLSession.shared) {
+        self.urlSession = urlSession
+    }
+
+    // MARK: Private properties
+    private var urlSession: URLSession
+
+    // MARK: NetworkManagerProtocol implementation
+    func load(from url: URL, completion: @escaping (Data) -> Void) {
+        urlSession.dataTask(with: url) { data, _, _ in
+            guard let data = data else { return }
+            completion(data)
+        }.resume()
+    }
+}
