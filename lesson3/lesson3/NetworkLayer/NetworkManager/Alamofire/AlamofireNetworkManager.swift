@@ -9,10 +9,16 @@ import Alamofire
 
 class AlamofireNetworkManager: NetworkManagerProtocol {
 
-
     // MARK: NetworkManagerProtocol implementation
     func load(from url: URL, completion: @escaping (Data) -> ()) {
         AF.request(url).responseData { response in
+            guard let data = response.data else { return }
+            completion(data)
+        }
+    }
+
+    func upload(data: Data, to url: URL, completion: @escaping (Data) -> ()) {
+        AF.request(url, method: .post, parameters: data).responseData { response in
             guard let data = response.data else { return }
             completion(data)
         }

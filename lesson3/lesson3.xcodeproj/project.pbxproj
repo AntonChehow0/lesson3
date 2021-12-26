@@ -21,11 +21,13 @@
 		6B2F7A434958FAE720049ABA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F7C68DA40E1A31B2DFF24 /* ContentView.swift */; };
 		6B2F7AB18349B3850B61F18C /* JsonSerializationDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F7AE88517741A12888985 /* JsonSerializationDecoder.swift */; };
 		6B2F7C87D06A8232F025E8B8 /* URLSessionNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F7A7A4B859863B7840151 /* URLSessionNetworkManager.swift */; };
+		6B2F7D27EF595379649955F1 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F7234E8F94811EA42D567 /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		46C011B167F6DE72F84CCA5B /* Pods-lesson3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lesson3.debug.xcconfig"; path = "Target Support Files/Pods-lesson3/Pods-lesson3.debug.xcconfig"; sourceTree = "<group>"; };
 		6B2F70A3C250AB923C0717D2 /* lesson3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lesson3App.swift; sourceTree = "<group>"; };
+		6B2F7234E8F94811EA42D567 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		6B2F73BCC4D437269B8396BC /* DecoderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoderProtocol.swift; sourceTree = "<group>"; };
 		6B2F756D86BEE843C527BE91 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6B2F75F87CD894373D669666 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				6B2F756D86BEE843C527BE91 /* User.swift */,
+				6B2F7234E8F94811EA42D567 /* Post.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				6B2F7AB18349B3850B61F18C /* JsonSerializationDecoder.swift in Sources */,
 				6B2F704E7B724BFD4A3D2D0E /* JsonDecoderBaseDecoder.swift in Sources */,
 				6B2F764C6DC5893C87651720 /* AlamofireNetworkManager.swift in Sources */,
+				6B2F7D27EF595379649955F1 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
