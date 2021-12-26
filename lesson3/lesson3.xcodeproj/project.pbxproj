@@ -9,16 +9,27 @@
 /* Begin PBXBuildFile section */
 		6B2F7058D8F0FE99E91EB7DB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B2F7CE056910E99752E31E5 /* Preview Assets.xcassets */; };
 		6B2F72766BC3775485C1E396 /* lesson3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F70A3C250AB923C0717D2 /* lesson3App.swift */; };
+		6B2F75D4C4777FC2D245851C /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F75F87CD894373D669666 /* ApiManager.swift */; };
+		6B2F7636BF19FE8623DCE0E8 /* NetworkManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F7CA12672FA4B7FF0A596 /* NetworkManagerProtocol.swift */; };
+		6B2F77337E40D89498C927F9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F756D86BEE843C527BE91 /* User.swift */; };
 		6B2F77A29723C8D0C2A56462 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B2F761AD0A17EAF54B5C11F /* Assets.xcassets */; };
+		6B2F78E04A8DFEF5F6DBC1D9 /* ApiManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F765EDBCA4E32EE964BA2 /* ApiManagerProtocol.swift */; };
 		6B2F7A434958FAE720049ABA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F7C68DA40E1A31B2DFF24 /* ContentView.swift */; };
+		6B2F7C87D06A8232F025E8B8 /* URLSessionNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F7A7A4B859863B7840151 /* URLSessionNetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6B2F70A3C250AB923C0717D2 /* lesson3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lesson3App.swift; sourceTree = "<group>"; };
+		6B2F756D86BEE843C527BE91 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		6B2F75F87CD894373D669666 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		6B2F761AD0A17EAF54B5C11F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6B2F765EDBCA4E32EE964BA2 /* ApiManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManagerProtocol.swift; sourceTree = "<group>"; };
 		6B2F78FBAA4F6EC55FDA5302 /* lesson3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lesson3.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B2F7A7A4B859863B7840151 /* URLSessionNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionNetworkManager.swift; sourceTree = "<group>"; };
 		6B2F7C68DA40E1A31B2DFF24 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6B2F7CA12672FA4B7FF0A596 /* NetworkManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManagerProtocol.swift; sourceTree = "<group>"; };
 		6B2F7CE056910E99752E31E5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8D20710F2778F77400BB3D8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,10 +46,12 @@
 		6B2F715C12D57847F8912C8A /* lesson3 */ = {
 			isa = PBXGroup;
 			children = (
+				8D20710F2778F77400BB3D8C /* Info.plist */,
 				6B2F761AD0A17EAF54B5C11F /* Assets.xcassets */,
 				6B2F7CD4B7AE02F1455395AC /* Preview Content */,
 				6B2F70A3C250AB923C0717D2 /* lesson3App.swift */,
 				6B2F7C68DA40E1A31B2DFF24 /* ContentView.swift */,
+				6B2F7481209D307981BE21D6 /* NetworkLayer */,
 			);
 			path = lesson3;
 			sourceTree = "<group>";
@@ -51,12 +64,56 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		6B2F71E6547B7BD9117ABB18 /* URLSession */ = {
+			isa = PBXGroup;
+			children = (
+				6B2F7A7A4B859863B7840151 /* URLSessionNetworkManager.swift */,
+			);
+			path = URLSession;
+			sourceTree = "<group>";
+		};
 		6B2F742406AB6D5FB4F2ADAA = {
 			isa = PBXGroup;
 			children = (
 				6B2F7183070E4BBFED204B9D /* Products */,
 				6B2F715C12D57847F8912C8A /* lesson3 */,
 			);
+			sourceTree = "<group>";
+		};
+		6B2F7481209D307981BE21D6 /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				6B2F7934C1C8DF6D2E3D9BBE /* NetworkManager */,
+				6B2F7A76E62012D7D0025B89 /* ApiManager */,
+				6B2F75B3EF349A3FF259D760 /* Models */,
+			);
+			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		6B2F75B3EF349A3FF259D760 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6B2F756D86BEE843C527BE91 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6B2F7934C1C8DF6D2E3D9BBE /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				6B2F71E6547B7BD9117ABB18 /* URLSession */,
+				6B2F7CA12672FA4B7FF0A596 /* NetworkManagerProtocol.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		6B2F7A76E62012D7D0025B89 /* ApiManager */ = {
+			isa = PBXGroup;
+			children = (
+				6B2F765EDBCA4E32EE964BA2 /* ApiManagerProtocol.swift */,
+				6B2F75F87CD894373D669666 /* ApiManager.swift */,
+			);
+			path = ApiManager;
 			sourceTree = "<group>";
 		};
 		6B2F7CD4B7AE02F1455395AC /* Preview Content */ = {
@@ -92,11 +149,14 @@
 /* Begin PBXProject section */
 		6B2F7F4928CFD5ED5025648C /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = 6B2F7823E4691570361BE657 /* Build configuration list for PBXProject "lesson3" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 6B2F742406AB6D5FB4F2ADAA;
@@ -128,6 +188,11 @@
 			files = (
 				6B2F72766BC3775485C1E396 /* lesson3App.swift in Sources */,
 				6B2F7A434958FAE720049ABA /* ContentView.swift in Sources */,
+				6B2F7636BF19FE8623DCE0E8 /* NetworkManagerProtocol.swift in Sources */,
+				6B2F7C87D06A8232F025E8B8 /* URLSessionNetworkManager.swift in Sources */,
+				6B2F78E04A8DFEF5F6DBC1D9 /* ApiManagerProtocol.swift in Sources */,
+				6B2F77337E40D89498C927F9 /* User.swift in Sources */,
+				6B2F75D4C4777FC2D245851C /* ApiManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +208,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"lesson3/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = lesson3/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -207,8 +273,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -222,6 +287,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"lesson3/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = lesson3/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -308,6 +374,7 @@
 				6B2F777CAFCEFA99B68F294C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6B2F7823E4691570361BE657 /* Build configuration list for PBXProject "lesson3" */ = {
 			isa = XCConfigurationList;

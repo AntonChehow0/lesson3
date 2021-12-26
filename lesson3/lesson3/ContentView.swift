@@ -9,9 +9,15 @@
 import SwiftUI
 
 struct ContentView: View {
+
+    private let apiManager: ApiManagerProtocol = ApiManager()
+
     var body: some View {
         Text("Hello, world!")
             .padding()
+            .onAppear {
+                apiManager.loadUsers { print($0) }
+            }
     }
 }
 
