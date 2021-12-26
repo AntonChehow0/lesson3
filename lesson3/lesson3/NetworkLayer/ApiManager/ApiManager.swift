@@ -8,13 +8,17 @@ import Foundation
 
 class ApiManager: ApiManagerProtocol {
 
-    init(networkManager: NetworkManagerProtocol = URLSessionNetworkManager()) {
+    init(networkManager: NetworkManagerProtocol = URLSessionNetworkManager(),
+         decoder: DecoderProtocol = JsonSerializationDecoder()) {
         self.networkManager = networkManager
+        self.decoder = decoder
     }
 
     // MARK: Private properties
     private let networkManager: NetworkManagerProtocol
-    let baseUrl = "https://jsonplaceholder.typicode.com/"
+    private let decoder: DecoderProtocol
+
+    private let baseUrl = "https://jsonplaceholder.typicode.com/"
 
     private enum MethodPath: String {
         case users = "users"
@@ -23,10 +27,9 @@ class ApiManager: ApiManagerProtocol {
     // MARK: ApiManagerProtocol implementation
     func loadUsers(completion: @escaping ([User]) -> ()) {
         guard let url = URL(string: "\(baseUrl)\(MethodPath.users.rawValue)") else { return }
-        print(url)
 
-        networkManager.load(from: url) { data in
-            guard let users = try? JSONDecoder().decode([User].self, from: data) else { return }
+        networkManager.load(from: url) { [weak self] data in
+            let users = self?.decoder.decodeToUsers(data: data) ?? []
             completion(users)
         }
     }
